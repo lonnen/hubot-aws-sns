@@ -1,0 +1,32 @@
+{
+  "name": "hubot-aws-sns",
+  "version": "0.1.0",
+  "description": "a hubot plugin to listen for and announce AWS SNS topics",
+  "main": "index.js",
+  "scripts": {
+    "test": "./script/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lonnen/hubot-aws-sns"
+  },
+  "dependencies": {
+    "aws-snsclient": "0.2.0",
+    "coffee-script": "~1.7.1"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "sinon-chai": "*",
+    "sinon": "*"
+  },
+  "keywords": [
+    "hubot"
+  ],
+  "author": "lonnen <lonnen@mozilla.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lonnen/hubot-aws-sns/issues"
+  },
+  "homepage": "https://github.com/lonnen/hubot-aws-sns"
+}
