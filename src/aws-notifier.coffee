@@ -29,10 +29,11 @@ module.exports = (robot) ->
         client = SNSClient(auth, (err, message) ->
             throw err if err
 
+            console.log message
+
             if message.Type is "SubscriptionConfirmation"
-              m = message.Message
-              s = message.SubscribeURL
-              robot.messageRoom "##{room}", "#{m} #{s}"
+              robot.messageRoom "##{room}", "#{message.Message}"
+              robot.messageRoom "##{room}", " #{message.SubscribeURL}"
               return
 
             if message.Subject.match /OK/
