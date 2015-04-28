@@ -11,7 +11,7 @@
 #   None
 #
 # URLS:
-#   POST /aws-sns?room=<room>
+#   POST /aws-sns/:room
 #
 # Author:
 #   jasonthomas
@@ -21,21 +21,15 @@ irc = require('irc')
 SNSClient = require('aws-snsclient')
 
 module.exports = (robot) ->
-    robot.router.post '/aws-sns', (req, res) ->
-        query = querystring.parse url.parse(req.url).query
-
-        room = query.room
+    robot.router.post '/aws-sns/:room', (req, res) ->
+        room = req.params.room
         auth =
             verify: false
-
-        console.log querystring
-        console.log message
 
         client = SNSClient(auth, (err, message) ->
             throw err if err
 
-
-            if message.Type is "SubscriptionConfirmation"
+            if "SubscribeURL" in message
               m = message.Message
               s = message.SubscribeURL
               robot.messageRoom "##{room}". "#{m} #{s}"
