@@ -11,7 +11,7 @@
 #   None
 #
 # URLS:
-#   POST /aws-sns/:room
+#   POST /aws-sns?room=<room>
 #
 # Author:
 #   jasonthomas
@@ -21,8 +21,13 @@ irc = require('irc')
 SNSClient = require('aws-snsclient')
 
 module.exports = (robot) ->
-    robot.router.post '/aws-sns/:room', (req, res) ->
-        room = req.params.room
+    robot.router.post '/aws-sns', (req, res) ->
+        query = querystring.parse url.parse(req.url).query
+
+        unless query.room
+          return
+
+        room = query.room
         auth =
             verify: false
 
