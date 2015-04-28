@@ -26,9 +26,6 @@ module.exports = (robot) ->
         auth =
             verify: false
 
-        if message.Type
-          console.log('')
-
         client = SNSClient(auth, (err, message) ->
             throw err if err
 
