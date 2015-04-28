@@ -26,10 +26,11 @@ module.exports = (robot) ->
         auth =
             verify: false
 
+        console.log message
+
         client = SNSClient(auth, (err, message) ->
             throw err if err
 
-            console.log message.Type
 
             if message.Type is "SubscriptionConfirmation"
               m = message.Message
