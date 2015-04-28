@@ -26,15 +26,9 @@ module.exports = (robot) ->
         auth =
             verify: false
 
+        # automatically handles confirmation requests
         client = SNSClient(auth, (err, message) ->
             throw err if err
-
-            console.log message
-
-            if message.Type is "SubscriptionConfirmation"
-              robot.messageRoom "##{room}", "#{message.Message}"
-              robot.messageRoom "##{room}", " #{message.SubscribeURL}"
-              return
 
             if message.Subject.match /OK/
                 state_color = 'light_green'

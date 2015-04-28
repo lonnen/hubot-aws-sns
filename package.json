@@ -1,6 +1,6 @@
 {
   "name": "hubot-aws-sns",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "a hubot plugin to listen for and announce AWS SNS topics",
   "main": "index.js",
   "scripts": {
