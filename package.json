@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "aws-snsclient": "0.2.0",
-    "coffee-script": "~1.7.1"
+    "coffee-script": "~1.7.1",
+    "irc": "^0.3.12"
   },
   "devDependencies": {
     "mocha": "*",
