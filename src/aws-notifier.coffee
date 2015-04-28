@@ -24,13 +24,11 @@ module.exports = (robot) ->
     robot.router.post '/aws-sns', (req, res) ->
         query = querystring.parse url.parse(req.url).query
 
-        unless query.room
-          return
-
         room = query.room
         auth =
             verify: false
 
+        console.log querystring
         console.log message
 
         client = SNSClient(auth, (err, message) ->
