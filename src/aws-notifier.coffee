@@ -26,8 +26,17 @@ module.exports = (robot) ->
         auth =
             verify: false
 
+        if message.Type
+          console.log('')
+
         client = SNSClient(auth, (err, message) ->
             throw err if err
+
+            if message.Type is "SubscriptionConfirmation"
+              m = message.Message
+              s = message.SubscribeURL
+              robot.messageRoom "##{room}". "#{m} #{s}"
+              return
 
             if message.Subject.match /OK/
                 state_color = 'light_green'
@@ -44,4 +53,3 @@ module.exports = (robot) ->
 
         client(req, res)
         res.end()
-        
