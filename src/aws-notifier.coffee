@@ -32,7 +32,7 @@ module.exports = (robot) ->
             if message.Type is "SubscriptionConfirmation"
               m = message.Message
               s = message.SubscribeURL
-              robot.messageRoom "##{room}". "#{m} #{s}"
+              robot.messageRoom "##{room}", "#{m} #{s}"
               return
 
             if message.Subject.match /OK/
